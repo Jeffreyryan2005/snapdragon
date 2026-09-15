@@ -6,6 +6,7 @@ Run:
 """
 
 import time
+import cv2
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -67,7 +68,8 @@ st.title("🛡️ SnapShield NPU: Air-Gapped Real-Time Deepfake Interceptor")
 st.caption("Optimized for Qualcomm® Snapdragon® X Elite & HP OmniBook Copilot+ PCs (Hexagon NPU 45 TOPS)")
 
 # Sidebar Configuration
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Qualcomm_logo.svg/320px-Qualcomm_logo.svg.png", width=160)
+st.sidebar.markdown("## 🛡️ SnapShield NPU")
+st.sidebar.markdown("**Qualcomm® Snapdragon® AI Lab**")
 st.sidebar.markdown("### Hardware Acceleration")
 qnn_mgr = QNNInferenceManager()
 telemetry = qnn_mgr.get_hardware_telemetry()

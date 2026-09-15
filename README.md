@@ -1,5 +1,6 @@
 # SnapShield NPU: Air-Gapped Real-Time Deepfake & Biometric Synthetic Attack Interceptor
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit)](https://snapshield-npu.streamlit.app/)
 [![Qualcomm Snapdragon](https://img.shields.io/badge/Hardware-Snapdragon%20X%20Elite-00bed6?style=for-the-badge&logo=qualcomm)](https://www.qualcomm.com/products/mobile/snapdragon/pcs-and-tablets/snapdragon-x-elite)
 [![Qualcomm AI Hub](https://img.shields.io/badge/Qualcomm-AI%20Hub%20Ready-3253dc?style=for-the-badge)](https://aihub.qualcomm.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Runtime-QNN%20HTP%2045%20TOPS-3fb950?style=for-the-badge)](https://onnxruntime.ai/)

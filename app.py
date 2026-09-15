@@ -87,6 +87,12 @@ def main() -> None:
         help="Start with deepfake synthetic attack injection enabled",
     )
     parser.add_argument(
+        "--input",
+        type=str,
+        default=None,
+        help="Path to pre-recorded video file (e.g. data/samples/deepfake_attack_sample.mp4)",
+    )
+    parser.add_argument(
         "--benchmark",
         action="store_true",
         help="Run headless performance benchmark and exit",
@@ -118,7 +124,17 @@ def main() -> None:
     # Attempt camera initialization
     cap = None
     source_mode = "Live Camera"
-    if args.mode == "webcam":
+    if args.input:
+        print(f"[+] Loading input video file: {args.input}")
+        cap = cv2.VideoCapture(args.input)
+        if not cap.isOpened():
+            print(f"[!] Unable to open video file: {args.input}. Falling back to simulator.")
+            cap = None
+            source_mode = "Physiological Simulator"
+        else:
+            source_mode = f"File: {args.input.replace('\\', '/').split('/')[-1]}"
+            print(f"[OK] Video file loaded: {source_mode}")
+    elif args.mode == "webcam":
         print("[+] Connecting to local webcam hardware...")
         cap = cv2.VideoCapture(0)
         if not cap.isOpened():
@@ -129,7 +145,7 @@ def main() -> None:
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
             cap.set(cv2.CAP_PROP_FPS, 30)
-            print("[✓] Live video stream connected.")
+            print("[OK] Live video stream connected.")
     else:
         source_mode = "Physiological Simulator"
 
@@ -151,13 +167,16 @@ def main() -> None:
             t_start = time.perf_counter()
 
             # 1. Capture Frame
-            if source_mode == "Live Camera" and cap is not None:
+            if cap is not None:
                 ret, frame = cap.read()
                 if not ret:
-                    frame = stream_gen.generate_synthetic_frame(is_deepfake=is_attack_injected)
-                elif is_attack_injected:
+                    if args.input:
+                        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                        ret, frame = cap.read()
+                    if not ret:
+                        frame = stream_gen.generate_synthetic_frame(is_deepfake=is_attack_injected)
+                elif is_attack_injected and not args.input:
                     # In attack mode over live camera: Blur and desaturate skin capillary harmonics
-                    # simulating AI deepfake face swap post-processing
                     frame_h, frame_w = frame.shape[:2]
                     blurred = cv2.GaussianBlur(frame, (15, 15), 0)
                     mask = np.zeros((frame_h, frame_w), dtype=np.uint8)

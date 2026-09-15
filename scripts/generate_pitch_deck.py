@@ -130,12 +130,12 @@ def generate_deck(output_path: str = "docs/SnapShield_Pitch_Deck.pptx") -> None:
     p_sub.space_before = Pt(14)
 
     p_meta = tf1.add_paragraph()
-    p_meta.text = "Target Hardware: Snapdragon® X Elite & HP OmniBook Ultra Copilot+ PCs (45 TOPS Hexagon NPU)"
+    p_meta.text = "Target Platform: Snapdragon® X Elite & HP OmniBook Ultra Copilot+ PCs (45 TOPS Hexagon NPU)\nLive Interactive Demo: https://snapshield-npu.streamlit.app  |  GitHub: https://github.com/Jeffreyryan2005/snapdragon"
     p_meta.font.name = "Calibri"
-    p_meta.font.size = Pt(13)
+    p_meta.font.size = Pt(12)
     p_meta.font.bold = True
     p_meta.font.color.rgb = COLOR_GREEN
-    p_meta.space_before = Pt(20)
+    p_meta.space_before = Pt(16)
 
     # ==========================================
     # SLIDE 2: The Critical Problem
@@ -365,28 +365,30 @@ def generate_deck(output_path: str = "docs/SnapShield_Pitch_Deck.pptx") -> None:
         "1. Complete Codebase",
         [
             "Full modular Python package ('snapshield') with clean object-oriented architecture.",
-            "Two UI Interfaces: Broadcast OpenCV Cyber-HUD and interactive Streamlit web portal.",
-            "Automated test suite (100% pass rate) validating rPPG SNR, vocoder detection, and fusion decisions."
+            "GitHub: https://github.com/Jeffreyryan2005/snapdragon",
+            "Broadcast OpenCV Cyber-HUD (215+ FPS) and pre-recorded test video clips in data/samples/.",
+            "Automated test suite (100% pass rate) validating rPPG SNR and vocoder detection."
         ],
         COLOR_CYAN
     )
     add_card(
         slide9, Inches(4.8), Inches(1.8), Inches(3.6), Inches(5.0),
-        "2. Qualcomm AI Hub Suite",
+        "2. Live Cloud Demo Portal",
         [
-            "Dedicated 'compile_qai_hub.py' script targeting Snapdragon X Elite CRD.",
-            "Model graph tracing, quantization config, and cloud compilation automation.",
-            "Hardware performance benchmark logs integrated into repository."
+            "Live Streamlit Portal: https://snapshield-npu.streamlit.app",
+            "Zero-setup interactive testing for Qualcomm judges on any phone or laptop.",
+            "Live video file scanner supporting MP4/AVI uploads with real-time rPPG analysis.",
+            "One-click Cryptographic Forensic Incident Audit Report generator (PDF)."
         ],
         COLOR_CYAN
     )
     add_card(
         slide9, Inches(8.8), Inches(1.8), Inches(3.6), Inches(5.0),
-        "3. Submission Artifacts",
+        "3. Qualcomm AI Hub Suite",
         [
-            "3-Page Technical Whitepaper (PDF & DOCX) detailing biological rPPG mathematics and QNN runtime.",
-            "10-Slide Championship Pitch Deck (PPTX & PDF).",
-            "Executive GitHub README with architecture diagrams and reproducible quickstart commands."
+            "Dedicated 'compile_qai_hub.py' script targeting Snapdragon X Elite CRD.",
+            "Model graph tracing, quantization config, and cloud compilation automation.",
+            "Empirical benchmark audit logging 4.64 ms latency at < 4.5 W power draw."
         ],
         COLOR_GREEN
     )

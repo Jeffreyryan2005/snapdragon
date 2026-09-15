@@ -192,8 +192,8 @@ c:\Users\user\Desktop\snapdraon\
 
 ### Setup
 ```bash
-git clone https://github.com/your-username/SnapShield-NPU.git
-cd SnapShield-NPU
+git clone https://github.com/Jeffreyryan2005/snapdragon.git
+cd snapdragon
 pip install -r requirements.txt
 ```
 
